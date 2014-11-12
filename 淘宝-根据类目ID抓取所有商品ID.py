@@ -30,7 +30,7 @@ def get_ids_by_cat(catid):
     ss = r.text
     totalPage = int(re.findall('totalPage":"(\d+)"', ss)[0])
     pagenums = range(1, totalPage + 1)
-    pp = Pool(30)
+    pp = Pool(5)
     ss = pp.map(lambda x: get_taobao_ids(catid, x), pagenums)
     return '\n'.join(ss)
 if __name__ == '__main__':
