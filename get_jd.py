@@ -94,7 +94,7 @@ def get_jd_rate_all(pid):
     if maxpn == -1:
         # print('null')
         return
-    pp = Pool(50)
+    pp = Pool(100)
     result = pp.map(
         lambda x: get_jd_rate(x[0], x[1]), list(zip([pid] * (maxpn + 1), range(maxpn + 1))))
     return result
@@ -118,5 +118,8 @@ def getjd(pid):
 
     return '\n'.join(aa)
 if __name__ == '__main__':
-    print(getjd(919979))
+    import time
+    aa = time.time()
+    getjd(919979)
     print(get_jd_title(919979))
+    print time.time() - aa
