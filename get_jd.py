@@ -47,6 +47,15 @@ headers = {'Host': 'club.jd.com',
            'Referer': 'http://item.jd.com/0.html'}
 
 
+def get_jd_title(pid):
+    aa = get_jd_rate(pid, 0)
+    try:
+        title = json.loads(aa)["comments"][0]['referenceName']
+    except:
+        title = 'Null'
+    return title
+
+
 def get_jd_rate(pid, pagenum):
     '''页码从0开始，在网页上显示的第一页'''
     for i in range(20):
@@ -110,3 +119,4 @@ def getjd(pid):
     return '\n'.join(aa)
 if __name__ == '__main__':
     print(getjd(919979))
+    print(get_jd_title(919979))
