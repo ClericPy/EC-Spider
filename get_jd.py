@@ -9,6 +9,8 @@ except:
     from multiprocessing.dummy import Pool  # py2和3通用的多线程
 import requests
 import json
+import uniout
+import re
 # import uniout。这个库可以让python2像3一样print中文列表
 
 
@@ -83,7 +85,7 @@ def get_jd_rate_all(pid):
     if maxpn == -1:
         # print('null')
         return
-    pp = Pool(30)
+    pp = Pool(50)
     result = pp.map(
         lambda x: get_jd_rate(x[0], x[1]), list(zip([pid] * (maxpn + 1), range(maxpn + 1))))
     return result
@@ -97,12 +99,14 @@ def get_jd_price(*pid):
     return r.content
 
 
-if __name__ == '__main__':  # 试试结果性能
-    # test get_jd_price
-    print(get_jd_price(1235762, 1019860))
-    # test get_jd_rate_all
-    import time
-    aa = time.time()
-    print(len(get_jd_rate_all(1213974)
-              ))
-    print(time.time() - aa)
+def getjd(pid):
+    aa = get_jd_rate_all(pid)
+    # print aa[0]
+
+    aa = [json.loads(i)['comments'] for i in aa if i]
+    aa = sum(aa, [])
+    aa = [i['content'].strip() for i in aa]
+
+    return '\n'.join(aa)
+if __name__ == '__main__':
+    print(getjd(919979))
