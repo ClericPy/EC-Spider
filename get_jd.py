@@ -9,7 +9,6 @@ except:
     from multiprocessing.dummy import Pool  # py2和3通用的多线程
 import requests
 import json
-import uniout
 import re
 # import uniout。这个库可以让python2像3一样print中文列表
 
