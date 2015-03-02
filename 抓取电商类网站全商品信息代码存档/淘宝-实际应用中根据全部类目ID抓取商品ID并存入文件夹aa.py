@@ -53,6 +53,11 @@ def get_ids_by_cat(catid):
             pagenums = range(1, totalPage + 1)
             pp = Pool(5)
             ss = pp.map(lambda x: get_taobao_ids(catid, x), pagenums)
+            try:
+                pp.close()
+                pp.join()
+            except:
+                pass
             ss = '\n'.join(ss) + '\n'
             with open('./aa/' + str(catid) + '.txt', 'w') as f:
                 f.write(ss)

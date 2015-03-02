@@ -9,6 +9,7 @@ import re
 import requests
 '''Python2和3通用，注意下载好支持库，因为淘宝最大显示页数100页，为了使结果更有价值，按销量排序抓取，而且选中了合并同款商品'''
 
+
 def get_taobao_ids(catid, pagenum):
     if pagenum == 1:
         pagenum = 1
@@ -32,6 +33,11 @@ def get_ids_by_cat(catid):
     pagenums = range(1, totalPage + 1)
     pp = Pool(5)
     ss = pp.map(lambda x: get_taobao_ids(catid, x), pagenums)
+    try:
+        pp.close()
+        pp.join()
+    except:
+        pass
     return '\n'.join(ss)
 if __name__ == '__main__':
     print(get_ids_by_cat(50052124).count('\n'))

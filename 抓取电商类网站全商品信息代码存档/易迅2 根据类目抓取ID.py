@@ -44,6 +44,11 @@ def getid(url1):
                 pns = range(2, int(pn) + 1)
                 pp = Pool(30)
                 dd = pp.map(lambda x: getbypn(url1, x), pns)
+                try:
+                    pp.close()
+                    pp.join()
+                except:
+                    pass
                 ss += dd
                 result = '\n'.join(ss) + '\n'
             with open('all_id.txt', 'a') as f:
@@ -61,3 +66,8 @@ with open('all_cat.txt') as f:
 zongshu = len(all_cat)
 pp = Pool(55)
 pp.map(getid, all_cat)
+try:
+    pp.close()
+    pp.join()
+except:
+    pass

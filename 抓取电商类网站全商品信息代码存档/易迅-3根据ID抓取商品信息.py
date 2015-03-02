@@ -46,3 +46,8 @@ zongshu = len(all_id)
 jishu = 0
 pp = Pool(200)
 pp.map(getid, all_id)
+try:
+    pp.close()
+    pp.join()
+except:
+    pass

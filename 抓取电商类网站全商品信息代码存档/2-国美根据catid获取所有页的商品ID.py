@@ -30,6 +30,11 @@ def getgome(cat):
                         continue
             pp = Pool(30)
             ss = pp.map(ff, urls)
+            try:
+                pp.close()
+                pp.join()
+            except:
+                pass
             global jishu
             jishu += 1
             sys.stderr.write(str(jishu) + ' / ' + zongshu + '\r')
