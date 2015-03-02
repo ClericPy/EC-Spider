@@ -96,6 +96,11 @@ def get_jd_rate_all(pid):
     pp = Pool(100)
     result = pp.map(
         lambda x: get_jd_rate(x[0], x[1]), list(zip([pid] * (maxpn + 1), range(maxpn + 1))))
+    try:
+        pp.close()
+        pp.join()
+    except:
+        pass
     return result
 
 
