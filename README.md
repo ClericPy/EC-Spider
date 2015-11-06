@@ -3,7 +3,7 @@ Unofficial-API_for_Crawling
 #声明：
 该源码仅为学习交流使用，不用于商业用途，如有侵权问题
 
-请在Issues里留言
+请在Issues[https://github.com/ClericPy/EC-Spider/issues]里留言
 
 ##介绍：
 
