@@ -3,7 +3,7 @@ Unofficial-API_for_Crawling
 #声明：
 该源码仅为学习交流使用，不用于商业用途，如有侵权问题
 
-请及时联系lidongone@qq.com(Q:304695350)撤销全部代码
+请在Issues里留言
 
 ##介绍：
 
