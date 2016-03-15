@@ -124,6 +124,6 @@ def getjd(pid):
 if __name__ == '__main__':
     import time
     aa = time.time()
-    getjd(919979)
+    print(getjd(919979))
     print(get_jd_title(919979))
-    print time.time() - aa
+    print(time.time() - aa)
